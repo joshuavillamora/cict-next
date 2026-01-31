@@ -17,8 +17,8 @@ export default function Header({ inter }) {
         href="/" 
         className="flex justify-center items-center gap-x-2 col-span-3 md:col-span-1 mx-auto"
       >
-        <Image src="/cict-emblem-dark.png" width={37} height={38} />
-        <Image src="/cict-wordmark.png" width={112} height={25} />
+        <Image src="/cict-emblem-dark.png" width={37} height={38} alt="CICT LOGO" />
+        <Image src="/cict-wordmark.png" width={112} height={25} alt="WVSU CICT WORDMARK" />
       </Link>
     
       <div className="hidden md:flex justify-center gap-x-12 mt-1">
