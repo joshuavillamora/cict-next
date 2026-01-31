@@ -15,7 +15,7 @@ export default function Header({ inter }) {
     <header className={`${inter.className} grid grid-cols-3 items-center px-6 py-6 text-lg font-medium`}>
       <Link 
         href="/" 
-        className="flex justify-center items-center gap-x-2"
+        className="flex justify-center items-center gap-x-2 col-span-3 md:col-span-1 mx-auto"
       >
         <Image src="/cict-emblem-dark.png" width={37} height={38} />
         <Image src="/cict-wordmark.png" width={112} height={25} />
