@@ -16,8 +16,8 @@ const inter = Inter({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${oswald.variable}`}>
-        <Header inter={inter} />
+      <body>
+        <Header inter="inter" />
         {children}
       </body>
     </html>
