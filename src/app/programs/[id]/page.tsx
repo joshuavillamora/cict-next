@@ -76,31 +76,31 @@ export default async function ProgramDetailsPage({ params }: PageProps) {
                 </div>
 
                 {/* Program Title */}
-                <h1 className="relative z-10 max-w-2xl md:max-w-6xl text-left md:text-center text-white text-[45px] md:text-7xl font-semibold md:font-normal leading-12 mt-10 md:mt-0 drop-shadow-sm">
+                <h1 className="relative z-10 max-w-2xl md:max-w-6xl text-left md:text-center text-white text-[45px] md:text-7xl font-semibold md:font-normal leading-12 md:leading-tight mt-10 md:mt-0 drop-shadow-sm">
                     {program.name}
                 </h1>
             </section>
 
 
             {/* CONTENT SECTION */}
-            <div className="max-w-7xl mx-auto px-7 pt-20 mb-15">
+            <div className="max-w-7xl mx-auto px-7 pt-8 md:pt-20 mb-15">
 
                 {/* 1. Description */}
-                <div className="mb-16">
-                    <h2 className="text-orange-light text-[40px] font-normal mb-8">
+                <div className="mb-12 md:mb-16">
+                    <h2 className="text-orange-light text-4xl md:text-[40px] font-medium md:font-normal mb-8">
                         Program Description
                     </h2>
-                    <div className="text-black text-base text-justify font-minor font-normal leading-relaxed tracking-tight">
+                    <div className="text-black text-base text-justify font-minor font-normal leading-relaxed tracking-tight whitespace-pre-line">
                         {program.description}
                     </div>
                 </div>
 
                 {/* 2. Objectives */}
                 <div className="mb-20">
-                    <h2 className="text-orange-light text-[40px] font-major font-normal mb-8">
+                    <h2 className="text-orange-light text-4xl md:text-[40px] font-medium md:font-normal mb-8">
                         Program Objectives
                     </h2>
-                    <p className="text-black text-base text-justify leading-relaxed font-normal tracking-tight">
+                    <p className="text-black text-base text-justify leading-relaxed font-normal tracking-tight whitespace-pre-line">
                         {program.objectives}
                     </p>
                 </div>
