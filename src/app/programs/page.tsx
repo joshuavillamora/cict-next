@@ -17,7 +17,7 @@ export default function ProgramsPage() {
     <main className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="relative flex md:flex-row w-full md:w-full h-103 md:h-148">
+      <section className="relative flex md:flex-row w-auto md:w-full h-103 md:h-148">
         <div className="absolute md:relative w-full h-100 md:h-full md:w-1/2">
           <Image
             src="/program_assets/cict.webp"
