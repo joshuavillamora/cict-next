@@ -39,11 +39,11 @@ export default async function ProgramDetailsPage({ params }: PageProps) {
     return (
         <main className="min-h-screen bg-white pb-20 font-sans">
 
-            <section className="relative w-110 h-98 md:w-full md:min-h-154 bg-orange-light flex flex-col items-center justify-center px-6 md:px-20 text-center overflow-hidden">
+            <section className="relative w-auto h-98 md:w-full md:min-h-154 bg-orange-light flex flex-col items-center justify-center px-6 md:px-20 text-center overflow-hidden">
 
                 {/* Dynamic Background Watermark */}
                 {/* Left SVG */}
-                <div className="absolute -left-20 bottom-0 md:-left-50 md:bottom-12 opacity-0 md:opacity-20 w-80 h-80 md:w-125 md:h-125 ">
+                <div className="absolute -left-20 bottom-0 md:-left-50 md:bottom-12 opacity-0 md:opacity-20 w-60 h-60 md:w-125 md:h-125 ">
                     <Image
                         src={program.logo}
                         alt=""
@@ -106,7 +106,7 @@ export default async function ProgramDetailsPage({ params }: PageProps) {
                 </div>
 
                 {/* INFO CARD */}
-                <div className="w-5xl mx-auto bg-white border-[1.5] border-black rounded-2xl px-35 py-4 flex flex-row justify-between gap-10 shadow-sm">
+                <div className="w-89 md:w-5xl mx-auto bg-white border-[1.5] border-black rounded-2xl p-8 mb-45 md:mt-0 md:mb-0 md:px-35 md:py-4 flex flex-col md:flex-row justify-between gap-10 shadow-sm">
 
                     {/* Left: Download Curriculum */}
                     <a
