@@ -22,8 +22,8 @@ export default function Header() {
         href="/" 
         className="flex justify-center items-center gap-x-2 md:col-span-1 duration-200 md:hover:scale-105 active:scale-95"
       >
-        <Image src="/cict-emblem-dark.png" width={37} height={38} alt="CICT LOGO" className="" />
-        <Image src="/cict-wordmark-dark.png" width={112} height={25} alt="WVSU CICT WORDMARK" className="" />
+        <Image src="/cict-emblem.png" width={37} height={38} alt="CICT LOGO" className="" />
+        <Image src="/cict-wordmark.png" width={112} height={25} alt="WVSU CICT WORDMARK" className="" />
       </Link>
       
       {/* Hamburger icon */}
