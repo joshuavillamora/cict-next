@@ -107,7 +107,7 @@ export default async function ProgramDetailsPage({ params }: PageProps) {
                 </div>
 
                 {/* INFO CARD */}
-                <div className="w-auto md:w-5xl mx-auto bg-white border-[1.5] border-black rounded-2xl p-8 mb-45 md:mt-0 md:mb-0 md:px-35 md:py-4 flex flex-col sm:flex-row md:flex-row justify-between gap-10 shadow-sm">
+                <div className="w-auto mx-auto bg-white border-[1.5] border-black rounded-2xl p-8 mb-45 md:mt-0 md:mb-0 md:px-35 md:py-4 flex flex-col sm:flex-row md:flex-row justify-between gap-10 shadow-sm">
 
                     {/* Left: Download Curriculum */}
                     <a
