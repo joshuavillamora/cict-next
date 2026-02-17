@@ -1,45 +1,72 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 interface NewsArticleCardProps {
   imgSrc?: string;
   date: string;
-  newsHeader: string;
+  header: string;
+  description?: string;
 }
 
-const NewsArticleCard: React.FC<NewsArticleCardProps> = ({ imgSrc, date, newsHeader }) => {
-    // [FUNCTION] Generate slug based on news header
-    const generateSlug = (text: string) => {
-        return text.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
-    };
-    
-    return (
-        <div className="flex rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            {/* Image */}
-            <div className="flex-1 relative">
-                <Image
-                src={imgSrc || "/placeholder.jpg"}
-                alt={newsHeader}
-                fill
-                className="text-xs font-minor text-center flex justify-center items-center px-4 text-[#4D4D4D]bg-black/10 object-cover"
-                priority
-                />
-            </div>
+const NewsArticleCard: React.FC<NewsArticleCardProps> = ({ imgSrc, date, header, description }) => {
+  const [isLoading, setIsLoading] = useState(true);
 
-            {/* Content */}
-            <div className="flex-1 py-4 px-6 flex flex-col justify-between">
-                <div className="space-y-2">
-                    <p className="text-xs font-minor text-[#4D4D4D]">{date}</p>
-                    <h3 className="text-lg font-major font-bold">{newsHeader}</h3>
-                </div>
+  // Generate slug
+  const generateSlug = (text: string) =>
+    text.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
 
-                {/* Read More Button */}
-                <Link href={`/news-announcements/news/${generateSlug(newsHeader)}`} className="text-xs font-minor font-semibold text-white tracking-wider mt-4 px-3 py-1 self-start bg-[var(--color-orange-dark)] border border-[var(--color-orange-dark)] rounded-full cursor-pointer transition-colors duration-300 ease-in-out hover:text-[var(--color-orange-dark)] hover:bg-white hover:border-[var(--color-orange-dark)]">
-                Read More &nbsp;→
-                </Link>
-            </div>
+  return (
+    <div className="flex md:flex-col rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow bg-white">
+      
+      {/* Image */}
+      <div className="relative w-32 sm:w-42 md:w-full md:h-48 lg:h-56 flex-shrink-0">
+        {/* Skeleton */}
+        {isLoading && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+        )}
+
+        {/* Image */}
+        {imgSrc && (
+          <Image
+            src={imgSrc}
+            alt={header}
+            fill
+            className="object-cover"
+            priority
+            onLoadingComplete={() => setIsLoading(false)}
+          />
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="py-4 px-6 flex flex-col justify-between flex-1">
+        <div className="space-y-3">
+            <p className="text-xs sm:text-sm font-minor text-[#4D4D4D]">{date}</p>
+            <h3 className="text-lg sm:text-xl font-major font-bold">{header}</h3>
+            {description ? (
+            <p className="text-xs sm:text-sm font-minor text-[#000000]/60 line-clamp-3 leading-loose sm:leading-normal">
+                {description}
+            </p>
+            ) : (
+            <p className="text-sm font-minor text-gray-400 italic line-clamp-3">
+                No summary provided
+            </p>
+            )}
         </div>
-    );
+
+        {/* Read More Button */}
+        <Link
+          href={`/news-announcements/news/${generateSlug(header)}`}
+          className="text-xs sm:text-sm font-minor font-semibold text-white tracking-wider mt-4 px-3 py-1 self-start bg-[var(--color-orange-dark)] border border-[var(--color-orange-dark)] rounded-full cursor-pointer transition-colors duration-300 ease-in-out hover:text-[var(--color-orange-dark)] hover:bg-white hover:border-[var(--color-orange-dark)]"
+        >
+          Read More &nbsp;→
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default NewsArticleCard;

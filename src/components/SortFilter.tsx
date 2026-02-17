@@ -18,7 +18,7 @@ const SortFilter: React.FC<SortFilterProps> = ({ value, onChange }) => {
 		<select
 		value={value}
 		onChange={(e) => onChange(e.target.value)}
-		className="text-xs font-minor italic text-[#000000]/40 h-full px-3 py-2 shadow-lg bg-white border-2 border-[#000000]/6 rounded-lg focus:outline-none cursor-pointer"
+		className="flex flex-1 sm:flex-1 w-full text-xs sm:text-sm font-minor italic text-[#000000]/40 h-full px-3 py-2 shadow-lg bg-white border-2 border-[#000000]/6 rounded-lg focus:outline-none cursor-pointer"
 		>
 			{options.map((opt) => (
 				<option

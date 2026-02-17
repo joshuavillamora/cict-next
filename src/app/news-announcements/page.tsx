@@ -14,32 +14,35 @@ export default function NewsAnnouncements() {
     const [sortOption, setSortOption] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
 
-    const articlesPerPage = 2; // # of articles per page
+    const articlesPerPage = 4; // # of articles per page
 
     // Mock data
     const newsArticles = useMemo(() => [
         {
             id: 1,
-            imgSrc: "",
             date: "02/01/2026",
+            description: "WVSU-CICT showcased innovative tech solutions at the ICC 2025 in Taiwan, highlighting student projects and faculty research.",
             newsHeader: "WVSU-CICT Presents Tech Solutions at ICC 2025 in Taiwan",
         },
         {
             id: 2,
             imgSrc: "",
             date: "02/02/2026",
+            description: "CICT faculty member Dr. Reyes published a groundbreaking research paper on AI applications in education, receiving international acclaim.",
             newsHeader: "CICT Faculty Publishes AI Research Paper",
         },
         {
             id: 3,
             imgSrc: "",
             date: "02/03/2026",
+            description: "WVSU-CICT will host the annual Student Projects Showcase on March 15, featuring innovative projects from students across all levels.",
             newsHeader: "New Student Projects Showcase 2026",
         },
         {
             id: 4,
             imgSrc: "",
             date: "02/04/2026",
+            description: "WVSU-CICT is launching a new scholarship program for underprivileged students pursuing degrees in computer science and information technology.",
             newsHeader: "Upcoming Technology Workshops at WVSU",
         },
     ], []);
@@ -76,11 +79,11 @@ export default function NewsAnnouncements() {
     };
 
     return (
-        <main className="px-12 py-8 space-y-10">
+        <main className="px-12 sm:px-18 md:px-24 py-8 sm:py-12 md:py-20 space-y-10 sm:space-y-14 md:space-y-18">
             {/* [SECTION] Announcements */}
             <section className="space-y-6">
-                <div className="flex items-center gap-2">
-                    <h2 className="text-2xl font-medium text-[#4D4D4D] whitespace-nowrap">
+                <div className="flex items-center gap-2 sm:gap-4">
+                    <h2 className="text-2xl sm:text-3xl font-medium text-[#4D4D4D] whitespace-nowrap">
                         ANNOUNCEMENTS
                     </h2>
                     <div className="flex-1 h-[2px] border-2 border-[var(--color-orange-dark)]"></div>
@@ -97,27 +100,28 @@ export default function NewsAnnouncements() {
 
             {/* [SECTION] News Articles */}
             <section className="space-y-2">
-                <div className="flex items-center gap-2">
-                    <h2 className="text-2xl font-medium text-[#4D4D4D] whitespace-nowrap">
+                <div className="flex items-center gap-2 sm:gap-4">
+                    <h2 className="text-2xl sm:text-3xl font-medium text-[#4D4D4D] whitespace-nowrap">
                         NEWS ARTICLES
                     </h2>
                     <div className="flex-1 h-[2px] border-2 border-[var(--color-orange-dark)]"/>
                 </div>
 
                 {/* [FEATURE] Search Bar & Sort Filter */}
-                <div className="flex justify-center items-center py-2 space-x-2 mb-4">
+                <div className="flex justify-between items-center py-2 space-x-4 sm:space-x-6 md:space-x-8 mb-4">
                     <SearchBar/>
                     <SortFilter value={sortOption} onChange={setSortOption} />
                 </div>
 
                 {/* [SECTION] News Article Cards */}
-                <div className="flex flex-col space-y-4">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                     {currentArticles.map(article => (
                         <NewsArticleCard
                             key={article.id}
                             imgSrc={article.imgSrc}
                             date={article.date}
-                            newsHeader={article.newsHeader}
+                            header={article.newsHeader}
+                            description={article.description}
                         />
                     ))}
                 </div>
