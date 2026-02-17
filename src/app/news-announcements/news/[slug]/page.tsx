@@ -1,5 +1,6 @@
 // [IMPORT] Standard
 import Image from "next/image";
+import Link from "next/link";
 
 interface NewsArticle {
 	id: number;
@@ -52,23 +53,48 @@ const NewsAnnouncements = ({ params }: PageProps) => {
 
 	// If missing article, display placeholder content
 	if (!article) {
-		return <div>Article not found.</div>;
+		return (
+			<div className="flex flex-col items-center justify-center h-[60vh] text-center px-6">
+				{/* [OPTIONAL] placeholder image or icon */}
+				<Image
+					src="/not-found-icon.svg"
+					alt="Not Found"
+					width={120}
+					height={120}
+					className="mb-6"
+				/>
+				<h2 className="text-2xl sm:text-3xl font-semibold text-gray-700 mb-2">
+					Article Not Found
+				</h2>
+				<p className="text-gray-500 mb-6">
+					The article you are looking for does not exist or has been removed.
+				</p>
+				<Link
+					href="/news-announcements"
+					className="px-6 py-2 rounded-full font-minor text-sm font-semibold bg-orange-dark text-white hover:bg-orange-light transition-colors"
+				>
+					Back to News
+				</Link>
+			</div>
+		);
 	}
 
 	return (
-		<div className="px-8 py-8">
+		<div className="px-8 py-8 max-w-4xl mx-auto">
 			<h1 className="text-3xl font-bold mb-4">{article.newsHeader}</h1>
 			<p className="text-sm text-gray-500 mb-6">{article.date}</p>
-			{article.imgSrc ? (
+			{article.imgSrc && (
 				<Image
-				src={article.imgSrc}
-				alt={article.newsHeader}
-				className="w-full max-w-xl mb-6 rounded-lg"
+					src={article.imgSrc}
+					alt={article.newsHeader}
+					className="w-full max-w-xl mb-6 rounded-lg"
+					width={800}
+					height={450}
 				/>
-			) : null}
-			<p className="text-base">{article.content}</p>
+			)}
+			<p className="text-base leading-relaxed">{article.content}</p>
 		</div>
 	);
 };
 
-	export default NewsAnnouncements;
+export default NewsAnnouncements;
