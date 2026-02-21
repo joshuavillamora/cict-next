@@ -40,22 +40,18 @@ const generateSlug = (text: string) =>
 	text.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
 
 interface PageProps {
-	params: { slug: string };
+	params: Promise<{ slug: string }>;
 }
 
-const NewsAnnouncements = ({ params }: PageProps) => {
-	const { slug } = params;
-
-	// Find news article that matches the slug
+const NewsAnnouncements = async ({ params }: PageProps) => {
+	const { slug } = await params;
 	const article = newsArticles.find(
 		(a) => generateSlug(a.newsHeader) === slug
 	);
 
-	// If missing article, display placeholder content
 	if (!article) {
 		return (
 			<div className="flex flex-col items-center justify-center h-[60vh] text-center px-6">
-				{/* [OPTIONAL] placeholder image or icon */}
 				<Image
 					src="/not-found-icon.svg"
 					alt="Not Found"
