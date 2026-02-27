@@ -3,7 +3,15 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const infoBoxes = [
+interface InfoBox {
+  icon: string;
+  title: string;
+  content?: string;
+  phone?: string;
+  email?: string;
+}
+
+const infoBoxes: InfoBox[] = [
   {
     icon: "/icons/firstbox_icon.svg",
     title: "ADDRESS",
@@ -18,7 +26,8 @@ const infoBoxes = [
   {
     icon: "/icons/contact_icon.svg",
     title: "CONTACT INFO",
-    content: "Phone:+6312345689\nEmail: cict@wvsu.edu.ph",
+    phone: "+6312345689",
+    email: "cict@wvsu.edu.ph",
   },
 ];
 
@@ -77,9 +86,28 @@ export default function Contact() {
             <p className="text-lg font-major font-bold text-orange-light">
               {box.title}
             </p>
-            <p className="text-sm text-neutral-600 mt-3 whitespace-pre-line font-minor px-4 sm:px-6">
-              {box.content}
-            </p>
+            {"phone" in box || "email" in box ? (
+              <div className="text-sm text-neutral-600 mt-3 font-minor px-4 sm:px-6">
+                {box.phone && (
+                  <p>
+                    <a href={`tel:${box.phone}`} className="hover:underline">
+                      Phone: {box.phone}
+                    </a>
+                  </p>
+                )}
+                {box.email && (
+                  <p>
+                    <a href={`mailto:${box.email}`} className="hover:underline">
+                      Email: {box.email}
+                    </a>
+                  </p>
+                )}
+              </div>
+            ) : (
+              <p className="text-sm text-neutral-600 mt-3 whitespace-pre-line font-minor px-4 sm:px-6">
+                {box.content}
+              </p>
+            )}
           </div>
         ))}
       </section>
@@ -159,8 +187,18 @@ export default function Contact() {
               Whether you have questions, need support, or want to learn more — our team is here to help.
             </p>
             <div className="flex gap-6 mt-6">
-              <img src="/icons/facebook.svg" alt="fb" width={40} height={40} />
-              <img src="/icons/linkedin.svg" alt="in" width={40} height={40} />
+              <a
+                href="https://www.facebook.com/WVSUCICT"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/icons/facebook.svg"
+                  alt="fb"
+                  width={40}
+                  height={40}
+                />
+              </a>
             </div>
           </div>
 
