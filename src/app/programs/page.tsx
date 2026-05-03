@@ -1,6 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import programsData from '../data/programs.json';
+import { Metadata } from 'next';
+
+// --- SEO METADATA CONFIGURATION ---
+export const metadata: Metadata = {
+  title: 'Programs', 
+  description: 'Explore our undergraduate and graduate degree programs and take the next step toward your goals.',
+  alternates: {
+    canonical: '/programs',
+  },
+  openGraph: {
+    title: 'Programs',
+    description: 'Explore our undergraduate and graduate degree programs and take the next step toward your goals.', 
+  },
+};
 
 interface Program {
   id: string;
